@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Description, Options, Feedback, Container } from './components'
+import {
+  Description,
+  Options,
+  Feedback,
+  Container,
+  Notification,
+} from './components'
 
 function App() {
   const [feedback, setFeedback] = useState(
@@ -34,8 +40,7 @@ function App() {
     0
   )
 
-  const positiveFeedback =
-    totalFeedback > 0 ? Math.round((feedback.good / totalFeedback) * 100) : 0
+  const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100)
 
   return (
     <Container>
@@ -43,12 +48,17 @@ function App() {
       <Options
         onUpdateFeedback={handleUpdateFeedback}
         onResetFeedback={handleResetFeedback}
-      />
-      <Feedback
-        feedback={feedback}
         totalFeedback={totalFeedback}
-        positiveFeedback={positiveFeedback}
       />
+      {totalFeedback > 0 ? (
+        <Feedback
+          feedback={feedback}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
+      ) : (
+        <Notification />
+      )}
     </Container>
   )
 }
