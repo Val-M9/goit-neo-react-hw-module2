@@ -1,0 +1,16 @@
+.options {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #a3a3a3;
+}
